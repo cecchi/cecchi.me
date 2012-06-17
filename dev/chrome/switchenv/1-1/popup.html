@@ -1,0 +1,16 @@
+<script type="text/javascript">
+function fix() {
+	var status = chrome.extension.getBackgroundPage().status;
+	document.getElementById('running').innerHTML = (status == -1 ? 'localhost' : 'remote');
+	document.getElementById('switchto').innerHTML = (status == -1 ? 'remote' : 'localhost');
+}
+window.onload = fix;
+chrome.extension.onRequest.addListener(function(data, sender, respond) {
+	if(data.target != 'popup') {
+		return false;
+	} else {
+		fix();
+	}
+});
+</script>
+<div style="width: 130px">Running on <span id="running"></span>. <a href="javascript:chrome.extension.getBackgroundPage().environment()" target="_blank">View <span id="switchto"></span></a></div>

@@ -1,0 +1,24 @@
+{
+  "name"       		 	: "jQuerify",
+  "version"	   		  : "1.0",
+  "description" 		: "Add jQuery to the active page if it is not already loaded. Uses Karl Swedberg's bookmarklet: http://www.learningjquery.com/2009/04/better-stronger-safer-jquerify-bookmarklet",
+  "background_page" : "background.html",
+  "page_action"	: {
+  	"default_icon"	: "icon.png",
+    "default_title" : "jQueryify this page"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js" : ["contentscript.js"],
+      "run_at" : "document_end",
+      "all_frames" : false
+    }
+  ],
+  "permissions"			: [
+  	"tabs"
+  ]
+}

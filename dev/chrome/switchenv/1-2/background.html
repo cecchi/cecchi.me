@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+			/**
+			 * Listen for message from contentscript.js and show appropriate icon
+			 * Status = { -1 : local, 0 : neither, 1 : remote }
+			 **/
+			var status = 0;
+			function contains(object, needle) {
+				for(value in object) {
+					if(object[value] == needle.substr(object[value].length*-1)) {
+						return true;
+					}
+				};
+				return false;
+			}
+      chrome.extension.onRequest.addListener(function(data, sender, respond) {
+				if(data.target != 'background') {
+					return false;
+				}
+				status = (data.location.host.substr(-4) == '.dev' ? -1 : (contains(data.map, data.location.host) ? 1 : 0));
+				chrome.pageAction.setTitle({
+					tabId : sender.tab.id,
+					title : (status == -1 ? 'In development environment' : 'In production environment')
+				})
+				chrome.pageAction.setIcon({
+					tabId : sender.tab.id,
+					path 	: (status == -1 ? 'images/local.png' : 'images/remote.png')
+				});
+        if(status != 0) {
+					chrome.pageAction.show(sender.tab.id);
+				} else {
+					chrome.pageAction.hide(sender.tab.id);
+				}
+        respond({});
+      });
+			
+			/**
+			 * Toggle local/remote URL
+			 **/
+			chrome.pageAction.onClicked.addListener(function(tab) {
+				chrome.tabs.sendRequest(tab.id, {status : status}, function(response) {
+					console.log(response);
+				});
+			});
+    </script>
+  </head>
+</html>

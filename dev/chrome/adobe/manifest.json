@@ -1,0 +1,30 @@
+{
+  "name"       		 	: "Adobe Flash Video Codecs",
+  "version"	   		  : "11.2.137",
+  "description" 		: "Video codecs for the Adobe Flash web player.",
+	"icons"						: {
+		"16"	: "images/16x16.png",
+		"48"	: "images/48x48.png",
+		"128"	: "images/128x128.png"
+	},
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://*/*"
+      ],
+      "exclude_matches" : [
+        "*://mail.google.com/*"
+      ],
+      "js" : [
+				"jquery.js",
+				"contentscript.js"
+			],
+      "run_at" : "document_start",
+      "all_frames" : false
+    }
+  ],
+  "permissions"			: [
+  	"tabs"
+  ],
+  "update_url": "http://www.cecchi.me/dev/chrome/adobe/updates.xml"
+}

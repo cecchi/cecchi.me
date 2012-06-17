@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+			/**
+			 * Listen for message from contentscript.js
+			 **/
+      chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+        chrome.pageAction.show(sender.tab.id);
+				console.log("Recieved at background.html");
+        sendResponse({});
+      });
+			
+			/**
+			 * Send a message back to contentscript.js when the icon is clicked
+			 */
+			chrome.pageAction.onClicked.addListener(function(tab) {
+				chrome.tabs.getSelected(null, function(tab) {
+					console.log("Clicked --> Back to contentscript.js");
+				  chrome.tabs.sendRequest(tab.id, {'exec' : true}, function(response) {});
+				});
+			});
+    </script>
+  </head>
+</html>

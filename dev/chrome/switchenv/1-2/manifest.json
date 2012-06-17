@@ -1,0 +1,32 @@
+{
+  "name"       		 	: "SwitchEnv",
+  "version"	   		  : "1.2",
+  "description" 		: "Displays an icon to allow switching between local and production environments",
+	"icons"						: {
+		"16"	: "images/remote.png",
+		"48"	: "images/48x48.png",
+		"128"	: "images/128x128.png"
+	},
+  "background_page" : "background.html",
+	"page_action"			: {
+		"default_icon"  : "images/remote.png",
+		"default_title"	: ""
+	},
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://*/*"
+      ],
+      "js" : [
+				"jquery.js",
+				"contentscript.js"
+			],
+      "run_at" : "document_end",
+      "all_frames" : false
+    }
+  ],
+  "permissions"			: [
+  	"tabs"
+  ],
+  "update_url": "http://www.cecchi.me/dev/chrome/switchenv/updates.xml"
+}

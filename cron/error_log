@@ -1,0 +1,13 @@
+[14-Feb-2012 21:02:24] PHP Warning:  imagecreatefrompng() [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: gd-png:  fatal libpng error: Read Error: truncated data in /home/cecchi/public_html/cron/map.php on line 28
+[14-Feb-2012 21:02:24] PHP Warning:  imagecreatefrompng() [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: gd-png error: setjmp returns error condition in /home/cecchi/public_html/cron/map.php on line 28
+[14-Feb-2012 21:02:24] PHP Warning:  imagecreatefrompng() [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: 'http://maps.googleapis.com/maps/api/staticmap?center=42.3736158,-71.1371335&amp;zoom=14&amp;size=2000x2000&amp;sensor=false&amp;scale=2' is not a valid PNG file in /home/cecchi/public_html/cron/map.php on line 28
+[14-Feb-2012 21:03:42] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/cecchi/public_html/cron/map.php on line 33
+[14-Feb-2012 21:03:42] PHP Warning:  imagecopy() expects parameter 2 to be resource, boolean given in /home/cecchi/public_html/cron/map.php on line 33
+[14-Feb-2012 21:03:42] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/cecchi/public_html/cron/map.php on line 34
+[14-Feb-2012 21:03:42] PHP Warning:  imagedestroy() expects parameter 1 to be resource, boolean given in /home/cecchi/public_html/cron/map.php on line 35
+[18-Feb-2012 05:00:09] PHP Warning:  imagecreatefrompng(http://maps.googleapis.com/maps/api/staticmap?center=42.3584308,-71.0871732&amp;zoom=14&amp;size=2000x2000&amp;sensor=false&amp;scale=2) [<a href='function.imagecreatefrompng'>function.imagecreatefrompng</a>]: failed to open stream: HTTP request failed! HTTP/1.0 500 Internal Server Error
+ in /home/cecchi/public_html/cron/map.php on line 28
+[18-Feb-2012 05:00:10] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/cecchi/public_html/cron/map.php on line 33
+[18-Feb-2012 05:00:10] PHP Warning:  imagecopy() expects parameter 2 to be resource, boolean given in /home/cecchi/public_html/cron/map.php on line 33
+[18-Feb-2012 05:00:10] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/cecchi/public_html/cron/map.php on line 34
+[18-Feb-2012 05:00:10] PHP Warning:  imagedestroy() expects parameter 1 to be resource, boolean given in /home/cecchi/public_html/cron/map.php on line 35

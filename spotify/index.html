@@ -1,0 +1,328 @@
+<html>
+<head>
+<title>Music Player</title>
+<script type="text/javascript">
+/*
+ * A few notes:
+ *    1. Player is essentially an anonymous class, there is only ever one Player (pseudo-singleton)
+ *    2. Playlist is private, but can access Player
+ *    3. This script is written for modern browsers. Non-HTML5 compliant browsers will simply see an error.
+ */
+(function() {
+  // General utility methods
+  var utils = (function() {
+    // log : void
+    this.log = function(){
+      window.console
+      && console.log
+      && console.log(arguments.length > 1 ? arguments : arguments[0]);
+    }
+    
+    // warn : void
+    this.warn = function(){
+      window.console
+      && console.warn
+      && console.warn(arguments.length > 1 ? arguments : arguments[0]);
+    }
+    
+    // isArray : Anything -> Boolean
+    this.isArray = function(any) {
+      return Object.prototype.toString.call(any) === '[object Array]';
+    }
+        
+    return this;
+  }).apply({});
+
+  // Playlist : Represents a list of tracks or other Playlists
+  function Playlist() {    
+    // Extend the Array type
+    var playlist = Object.create(Array.prototype);
+    
+    // Initialize the Array
+    playlist = (Array.apply(playlist, arguments) || playlist);
+
+    // name : String representing the name of this Playlist
+    var name = "Unnamed Playlist";
+    
+    // Playlist.setName() : String -> Playlist
+    playlist.setName = function(newName) {
+      name = newName;
+    }
+
+    // Playlist.setName() -> String
+    playlist.getName = function() {
+      return name;
+    }
+
+    // Playlist.enqueue() : Track -> Playlist
+    playlist.enqueue = function(track) {
+      this.push(track);
+      return this;
+    }
+    
+    // Playlist.dequeue() -> Track
+    playlist.dequeue = function() {
+      return this.shift();
+    }
+    
+    // Playlist.remove() : Number -> Playlist
+    playlist.remove = function(i) {
+      var rest = this.slice(i + 1);
+      this.length = i;
+      this.push.apply(this, rest);
+      return this;
+    }
+    
+    // Playlist.addToPlaylist() : Playlist -> Playlist
+    playlist.addToPlaylist = function(parentPlaylist) {
+      parentPlaylist.enqueue(this);
+      return this;
+    }
+    
+    // Playlist.each() : [Track -> void] -> Playlist
+    playlist.eachTrack = function(func) {
+      for(track in this) {
+        if(Object.prototype.toString.call(this[track]) == '[object Function]') {
+          continue;
+        } else if(func(track, this[track]) === false) {
+          break;
+        }
+      }
+    }
+
+    return playlist;
+  }
+
+  // queue : Playlist representing the current queue of tracks to play
+  var queue = new Playlist();
+  
+  // playlists : Playlist of Playlists representing the list of user-created Playlists
+  var playlists = new Playlist();
+  
+  // status : Boolean representing whether the Player is playing a track
+  var playing = false;
+
+  // config : Object representing configuration options for the Player
+  var config = {
+    'maxSearchResults' : 10 // In this demo, must be < 100
+  }
+  
+  // Player.search() : ["track", "album", "artist"], String, [Playlist -> void], [XMLHttpRequest -> void] -> Player
+  this.search = function(index, query, success, failure) {
+    /** TODO: Caching **/
+    var request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    request.onreadystatechange = function() {
+      if(request.readyState === 4 && request.status === 200) {
+        /** TODO: Helper method. And pagination, etc **/
+        var response = JSON.parse(request.responseText);
+        if(typeof success === "function") success(response[index+'s'].splice(0, config.maxSearchResults));
+      } else if(request.readyState === 4) {
+        utils.warn("Spotify Metadata API request failed: " + request.status + " (" + request.statusText + ")");
+        if(typeof failure === "function") failure(request);
+      }
+    }
+    /** TODO: Filter input (UTF8, etc) **/
+    request.open("GET", "http://ws.spotify.com/search/1/" + index + ".json?q=" + query, true);
+    request.send();
+    return this;
+  }
+  
+  /* Public playlist management methods */
+  
+  // Player.getQueue() -> Playlist
+  this.getQueue = function() {
+    return queue;
+  }
+  
+  // Player.setQueue() : Playlist -> Player
+  this.setQueue = function(playlist) {spo
+    queue = playlist;
+    return this;
+  }
+  
+  // Player.getPlaylists() -> Array
+  this.getPlaylists = function() {
+    return playlists;
+  }
+  
+  // Player.createPlaylist() : String, Track(s) -> Playlist
+  this.createPlaylist = function() {
+    var playlist = Playlist.apply(null, arguments);
+    playlists.push(playlist);
+    return playlist;
+  }
+  
+  // Player.addPlaylist() : Playlist -> Player
+  this.addPlaylist = function(playlist) {
+    playlists.push(playlist);
+    return Player;
+  }
+  
+  // Player.enqueue() : Number -> Player
+  this.enqueue = function(id) {
+    this.getQueue().enqueue(id);
+    return this;
+  }
+
+  // Player.dequeue() -> Number
+  this.dequeue = function() {
+    return this.getQueue().dequeue();
+  }
+  
+  /* Public player control methods */
+  
+  // Player.play() -> Player
+  this.play = function() {
+    playing = true;
+    return this;
+  }
+  
+  // Player.stop() -> Player
+  this.stop = function() {
+    playing = false;    
+    return this;
+  }
+  
+  // Player.rewind() -> Player
+  this.rewind = function() {
+    return this;
+  }
+  
+  // Player.fastForward() -> Player
+  this.fastForward = function() {
+    return this;
+  }
+  
+  return this;
+}).apply(Player = {});
+
+/* 
+ * This is non-optimal, but for this simple demo listening to the window onload event is preferable to 
+ * dealing with a pile of browser-specific hacks. Tanny O'Haley has a good, although bulky, implementation: 
+ * http://tanny.ica.com/ICA/TKO/tkoblog.nsf/dx/domcontentloaded-for-browsers-part-v
+ */
+window.onload = function() {
+  // Search Submit
+  document.getElementById("searchSubmit").onclick = function() {
+    var index = document.getElementById("searchIndex").value;
+    var query = document.getElementById("searchQuery").value;
+    Player.search(index, query, function(results) {
+      var list = document.getElementById("results");
+      list.innerHTML = "";
+      window[index+'Search'].call(null, list, results)
+    }, function(request) {
+      alert("Search failed: "+request.statusText);
+    });
+  }
+
+  // Create Playlist
+  document.getElementById("createPlaylist").onclick = function() {
+    var playlist = Player.createPlaylist();
+    var index = Player.getPlaylists().indexOf(playlist);
+    var playlistsDiv = document.getElementById("playlists");
+    var playlistName = document.getElementById("playlistName").value;
+    if(playlistName.length) {
+      playlist.setName(playlistName);
+    }
+    playlistItem = buildElement("div", {"class" : "playlistItem", "id" : "playlist_" + index});
+    playlistTitle = buildElement("a", false, playlist.getName(), function() {
+      alert("Edit this shit");
+    });
+    playlistDelete = buildElement("a", false, " Delete", function() {
+      deletePlaylist(playlistDelete.parentNode)
+    });
+    playlistItem.appendChild(playlistTitle).parentNode.appendChild(playlistDelete);
+    playlistsDiv.appendChild(playlistItem);
+  }
+}
+
+// buildElement : String, String, String, Function -> DOMElement
+function buildElement(tag, attrs, html, clickEvent) {
+  var el = document.createElement(tag);
+  if(attrs) {
+    for(i in attrs) {
+      el.setAttribute(i, attrs[i]);
+    }
+  }
+  if(html) {
+    el.innerHTML = html;
+  }
+  if(clickEvent) {
+    el.onclick = clickEvent;
+  }
+  return el;
+}
+
+function deletePlaylist(playlistEl) {
+  console.log(playlistEl);
+  var index = parseInt(playlistEl.id.replace(/^[^\d]+/g, ""), 10);
+  playlistEl.parentNode.removeChild(playlistEl);
+  var count = Player.getPlaylists().remove(index).length;
+  // Reindex following playlists
+  for(i = index + 1; i <= count; i++) {
+    document.getElementById("playlist_" + i).setAttribute("id", "playlist_" + (i -1));
+  }
+}
+
+// trackSearch : DOMElement, Array -> void
+function trackSearch(list, tracks) {
+  var playlist = Player.createPlaylist.apply(null, tracks);
+  playlist.eachTrack(function(i, track) {
+    var listItem = createClickableElement("li", "track", track.name, function() {
+      Player.enqueue(track);
+    })
+    list.appendChild(listItem);
+  });
+}
+
+// trackSearch : DOMElement, Array -> void
+function albumSearch(list, albums) {
+  for(i in albums) {
+    var album = albums[i];
+    var listItem = document.createElement("li");
+    list.appendChild(listItem);
+    listItem.innerHTML = album.name;
+    listItem.className = index;
+    listItem.onclick = function() {
+      console.log("Album: ", album);
+    }
+  }
+}
+
+// artistSearch : DOMElement, Array -> void
+function artistSearch(list, artists) {
+  for(i in artists) {
+    var artist = artists[i];
+    var listItem = document.createElement("li");
+    list.appendChild(listItem);
+    listItem.innerHTML = artist.name;
+    listItem.className = index;
+    listItem.onclick = function() {
+      console.log("Artist: ", artist);
+    }
+  }
+}
+</script>
+<style type="text/css">
+body {
+  font-size: .8em;
+  font-family: "Lucida Sans", sans-serif;
+}
+</style>
+</head>
+<body>
+<h1>Search</h1>
+<select id="searchIndex">
+  <option value="track">Track</option>
+  <option value="artist">Artist</option>
+  <option value="album">Album</option>
+</select>
+<input type="text" id="searchQuery" /> <button id="searchSubmit">Search</button>
+<h3>Results:</h3>
+<ol id="results"></ol>
+
+<h1>Playlists</h1>
+<div id="playlists"></div>
+<input type="text" id="playlistName" /> <button id="createPlaylist">Create Playlist</button>
+</body>
+</html>
