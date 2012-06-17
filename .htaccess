@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule ^(.+).src$ /resources/source.php?path=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]*)/?((?:[^/]+/?)*)$ index.php [B]
