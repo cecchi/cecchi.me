@@ -7,7 +7,7 @@ if($handle = opendir($_GET['path'])) {
     }
   }
 
-  echo json_encode($files);
+  echo json_encode(sort($files));
 
   closedir($handle);
 }
