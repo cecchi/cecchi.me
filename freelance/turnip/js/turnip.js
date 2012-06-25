@@ -51,7 +51,7 @@ Turnip = (function(options) {
         video.cue(options.cues[key], function() {
           $('#slideshow')[0].src = options.slideshow.path + value;
         });
-      });      
+      });
 
       // Autoplay?
       if(options.video.autoplay) {
