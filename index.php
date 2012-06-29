@@ -97,7 +97,7 @@ $(window).load(function() {
 	};
 });
 </script>
-<link rel="stylesheet" type="text/css" href="http://www.cecchi.me/css/css.css" id="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/css.css" id="stylesheet" />
 </head>
 
 <body>
