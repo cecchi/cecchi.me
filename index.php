@@ -77,7 +77,7 @@ $(window).load(function() {
 		}
 		return false;
 	});
-	
+	/*
 	// Initial social media icon positons
 	$('#social *').each(function() {
 		$(this).data('init', parseInt($(this).css('left')));
@@ -90,7 +90,7 @@ $(window).load(function() {
 			$(this).animate({'left' : $(this).data('init')});
 		});
 	});
-	
+	*/
 	window.onpopstate = function(state) {
 		var page = window.location.hash.length > 0 ? '/'.window.location.hash.substr(1) : (window.location.pathname.length ? window.location.pathname : false);
 		if(page) { goto(page); }
@@ -109,11 +109,12 @@ $(window).load(function() {
         <div>ME@CECCHI.ME</div>
         <div>BOSTON, MA</div>
       </div>
-      <a id="fb" title="Facebook" href="http://www.facebook.com/cecchimacnaughton" target="_blank"></a>
-      <a id="el" title="Elance" href="https://www.elance.com/s/cecchi/" target="_blank"></a>
-      <a id="msn" title="MSN" href="http://profile.live.com/cid-2a8be1d1a818720a" target="_blank"></a>
-      <a id="li" title="LinkedIn" href="http://www.linkedin.com/profile/view?id=134952624" target="_blank"></a>
-      <a id="da" title="DeviantArt" href="http://cecchimacnaughton.deviantart.com" target="_blank"></a>
+        <a id="fb" title="Facebook" href="http://www.facebook.com/cecchimacnaughton" target="_blank"></a>
+        <a id="el" title="Elance" href="https://www.elance.com/s/cecchi/" target="_blank"></a>
+        <a id="msn" title="MSN" href="http://profile.live.com/cid-2a8be1d1a818720a" target="_blank"></a>
+        <a id="li" title="LinkedIn" href="http://www.linkedin.com/profile/view?id=134952624" target="_blank"></a>
+        <a id="da" title="DeviantArt" href="http://cecchimacnaughton.deviantart.com" target="_blank"></a>
+        <a id="so" title="Stack Overflow" href="http://stackoverflow.com/users/1366376/cecchi?tab=summary" target="_blank"></a>
     </div>
   </div>
   <div id="name"></div>

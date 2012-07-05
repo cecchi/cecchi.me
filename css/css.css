@@ -42,17 +42,27 @@ a {
   padding: 3px 6px 0px 0px;
 }
 #location {
-  padding-right: 4px;
+  float: left;
+  padding-right: 8px;
   display: inline-block;
   text-shadow: 2px 2px 0 #980204;
   text-align: right;
   letter-spacing: 1px;
   position: relative;
-  left: 186px;
-  top: -2px;
+  left: 220px;
+}
+#corner:hover #location {
+  left: 0px;
 }
 #location div {
   height: 16px;
+}
+#location,
+#social a {
+  -moz-transition: left 300ms ease-in-out;
+  -webkit-transition: left 300ms ease-in-out;
+  -o-transition: left 300ms ease-in-out;
+  transition: left 300ms ease-in-out;
 }
 #social a {
   width: 32px;
@@ -63,23 +73,30 @@ a {
 }
 #social a#fb {
   background: url(../images/sprite.png) no-repeat -2px -87px;
-  left: 190px;
+  left: 222px;  
 }
 #social a#el {
   background: url(../images/sprite.png) no-repeat -44px -87px;
-  left: 153px;
+  left: 186px;
 }
 #social a#msn {
   background: url(../images/sprite.png) no-repeat -86px -87px;
-  left: 116px;
+  left: 150px;
 }
 #social a#li {
   background: url(../images/sprite.png) no-repeat -128px -87px;
-  left: 79px;
+  left: 114px;
 }
 #social a#da {
   background: url(../images/sprite.png) no-repeat -170px -87px;
+  left: 78px;
+}
+#social a#so {
+  background: url(../images/sprite.png) no-repeat -212px -87px;
   left: 42px;
+}
+#corner:hover #social a {
+  left: 0px;
 }
 #name {
   background: url(../images/sprite.png) no-repeat 0px 0px;
