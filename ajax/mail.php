@@ -36,5 +36,5 @@ $headers .= 'Return-path: :'.$name.'" <'.$from.'>'."\r\n";
 if(@mail($to, $subject, $message, $headers)) {
 	output("Your message has been sent, I'll get back to you shortly.", true);
 } else {
-	output("There was an issue sending your message. Please email me at cecchi@ccs.neu.edu", false);
+	output("There was an issue sending your message. Please email me at " + $to, false);
 }
