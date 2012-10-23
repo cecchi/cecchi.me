@@ -48,40 +48,36 @@ ob_start();
 		<div>Northeastern University, Boston, MA</div>
 	  <div class="indent">
 	  	Candidate for a B.S. in Computer Science<br />
-	    Graduating in 2015
+	    Graduating in 2015 (Currently on Leave of Absense)
 	  </div>
-  </div>
-  <div>
-	  <div class="right">Sept. 2009 - June 2010</div>
-	  <div>Andover High School, Andover, MA</div>
-  </div>
-  <div>
-	  <div class="right">June 2009</div>
-	  <div>NOLS (National Outdoor Leadership School), UT/WY</div>
-  </div>
-  <div>
-	  <div class="right">Sept. 2006 - Mar. 2009</div>
-	  <div>Phillips Academy, Andover, MA</div>
   </div>
 </div>
 
 <div class="title"><b>T</b>ECHNICAL <b>K</b>NOWLEDGE</div>
 <div class="indent narrow">
   <div>
-	  <div class="right">HTML, CSS, XML, Textile</div>
+	  <div class="right">HTML5 &amp; CSS3/LESS, XML</div>
 	  <div>Markup Languages:</div>
   </div>
   <div>
-	  <div class="right">Java, Scheme (Lisp), ACL2s, C</div>
-	  <div>Programming Languages:</div>
-  </div>
-  <div>
-	  <div class="right">PHP, Javascript (and jQuery), AJAX</div>
+	  <div class="right">JavaScript, PHP, AJAX</div>
 	  <div>Scripting Languages:</div>
   </div>
   <div>
-	  <div class="right">MySQL</div>
-	  <div>Query Languages:</div>
+    <div class="right">Node.JS, Phantom/CasperJS, Meteor</div>
+    <div>JavaScript Dialects:</div>
+  </div>
+  <div>
+    <div class="right">Java, Scheme (Lisp), ACL2s, C</div>
+    <div>Programming Languages:</div>
+  </div>
+  <div>
+	  <div class="right">MySQL, Redis</div>
+	  <div>Query Languages &amp; Databases:</div>
+  </div>
+  <div>
+    <div class="right">jQuery, AngularJS, Underscore, PopcornJS, EtherpadLite</div>
+    <div>Libraries &amp; Tools</div>
   </div>
   <div>
 	  <div class="right">Windows, Mac OSX, Linux, Android</div>
@@ -91,9 +87,26 @@ ob_start();
 
 <div class="title"><b>E</b>XPERIENCE</div>
 <div class="indent">
+  <div>
+    <div class="right">Feb. 2012 - June 2012</div>
+    <div>Nimblebot - Front End Developer</div>
+    <ul class="indent">
+      <li>Built a web app interface for a large-scale online interactive textbook platform, included all client-facing HTML and CSS as well as many of the JavaScript modules.</li>
+      <li>Combined PopcornJS and Meteor to build a live, interactive, web show for Boston.com. Viewers interact with the live stream in numerous ways and that data is propagated to other viewers and the host instantly.</li>
+      <li>Developed the JavaScript application structure around PopcornJS for ReactVid.com, a web platform for crowd-sourced fact-checking for political campaign ads.</li>
+    </ul>
+  </div>
+  <div>
+    <div class="right">Feb. 2011 - Current</div>
+    <div>Adirondack Camp - Webmaster</div>
+    <ul class="indent">
+      <li>Led marketing efforts for the <a href="http://www.adirondackcamp.com" target="_blank">AdirondackCamp.com</a>, generating leads for new campers and staff, while managing the general upkeep of the site on a day-to-day basis.</li>
+      <li>Collaborated with another developer team to aid in the creation of an entirely new website.</li>
+    </ul>
+  </div>
 	<div>
 		<div class="right">2009 - Present</div>
-		<div>Freelance Web Programming</div>
+		<div>Contracted Web Development</div>
 	  <ul class="indent">
 	    <li>Created an online merchant application for <a href="http://www.cpay.com" target="_blank">CPay.com</a>, a credit card processor.</li>
 	    <li>Updated <a href="http://www.wallmonkeys.com" target="_blank">Wallmonkeys.com</a>, a wall graphics company, adding nearly 10 million products to their catalog and extending their services to Google Base and Amazon, as well as developing an in-room preview feature for their graphics.</li>
@@ -114,30 +127,12 @@ ob_start();
       <li>Designed a JavaScript/HTML5 impementation of polygon triangulation and point-picking.</li>
 	  </ul>
 	</div>
-	<div>
-		<div class="right">Feb. 2011 - Current</div>
-		<div>Adirondack Camp Webmaster</div>
-	  <ul class="indent">
-	    <li>Led marketing efforts for the <a href="http://www.adirondackcamp.com" target="_blank">AdirondackCamp.com</a>, generating leads for new campers and staff, while managing the general upkeep of the site on a day-to-day basis.
-</li>
-	    <li>Collaborated with another developer team to aid in the creation of an entirely new website.</li>
-	  </ul>
-	</div>
-	<div>
-		<div class="right">June - Aug. 2010, 2011</div>
-		<div>Camp Counselor</div>
-	  <ul class="indent">
-	    <li>Spent 2 summers teaching rock climbing to children ages 6 to 16, and led rock climbing trips to crags in upstate New York.</li>
-	    <li>Lived with a group of 14 and 15 year olds and organized activities for them.</li>
-	  </ul>
-	</div>
 </div>
 
 <div class="title"><b>I</b>NTERESTS</div>
 <div class="indent">
   <ul class="indent">
     <li>Soccer: Played for a regional club team and was the captain of high school's varsity team. Has continued to play  in a few men's leagues.</li>
-    <li>Web Design: Developed multiple websites for friends as well as myself.</li>
     <li>Rock Climbing: Started climbing at age 11 and have continued climbing indoors and outdoors.</li>
     <li>Hiking: Hiked in the Adirondacks extensively as well as the White Mountains, and internationally when possible.</li>
   </ul>
