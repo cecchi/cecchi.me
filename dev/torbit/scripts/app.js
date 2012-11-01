@@ -69,7 +69,7 @@ var Dashboard = (function(Rickshaw) {
         stroke : 'rgba(' + colors[0]['r'] + ',' + colors[0]['g'] + ',' + colors[0]['b'] + ',0.75)',
         data   : this.transform(data, 'backend_ms', 'x')
       }, {
-        name   : 'Frontend2',
+        name   : 'Frontend',
         color  : 'rgba(' + colors[1]['r'] + ',' + colors[1]['g'] + ',' + colors[1]['b'] + ',0.25)',
         stroke : 'rgba(' + colors[1]['r'] + ',' + colors[1]['g'] + ',' + colors[1]['b'] + ',0.75)',
         data   : this.transform(data, 'frontend_ms', 'x')
