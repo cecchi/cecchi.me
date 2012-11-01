@@ -50,6 +50,8 @@ var Dashboard = (function(Rickshaw) {
       });
     }
 
+    var colors = [d3.rgb(palette.color()), d3.rgb(palette.color())];
+    console.log('rgba(' + colors[0]['r'] + ',' + colors[0]['g'] + ',' + colors[0]['b'] + ', 0.5)');
     var chart = new Rickshaw.Graph({
       element  : document.getElementById('chart'),
       width    : 690,
@@ -58,18 +60,23 @@ var Dashboard = (function(Rickshaw) {
         'top'    : 0.1,
         'bottom' : 0.1
       },
-      renderer : 'line',
+      renderer : 'area',
       min      : 'auto',
+      stroke   : true,
       series   : [{
-        name  : 'Backend',
-        color : palette.color(),
-        data  : this.transform(data, 'backend_ms', 'x')
+        name   : 'Backend',
+        color  : 'rgba(' + colors[0]['r'] + ',' + colors[0]['g'] + ',' + colors[0]['b'] + ',0.25)',
+        stroke : 'rgba(' + colors[0]['r'] + ',' + colors[0]['g'] + ',' + colors[0]['b'] + ',0.75)',
+        data   : this.transform(data, 'backend_ms', 'x')
       }, {
-        name  : 'Frontend',
-        color : palette.color(),
-        data  : this.transform(data, 'frontend_ms', 'x')
+        name   : 'Frontend2',
+        color  : 'rgba(' + colors[1]['r'] + ',' + colors[1]['g'] + ',' + colors[1]['b'] + ',0.25)',
+        stroke : 'rgba(' + colors[1]['r'] + ',' + colors[1]['g'] + ',' + colors[1]['b'] + ',0.75)',
+        data   : this.transform(data, 'frontend_ms', 'x')
       }]
     });
+    console.log(chart.series);
+    chart.renderer.unstack = true;
 
     var axes = {
       x : new Rickshaw.Graph.Axis.Time({ graph: chart }),
