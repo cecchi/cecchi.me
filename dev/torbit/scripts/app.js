@@ -1,30 +1,30 @@
-var app = (function(Rickshaw) {
-  var app = {};
+var Dashboard = (function(Rickshaw) {
+  var Dashboard = {};
 
-  app.generateData = function(length, start, interval) {
+  Dashboard.generateData = function(length, start, interval) {
     // Defaults
     length   = typeof length   !== 'undefined' ? length   : 31; // 31 data points
     start    = typeof start    !== 'undefined' ? start    : Math.floor(new Date().getTime() / 1000) - (86400 * 31); // Starting 31 days ago
     interval = typeof interval !== 'undefined' ? interval : 86400; // 1 data point per day
 
-    function randomInteger(min, max) {
+    this.randomInteger = function(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
 
-    function randomIntegerSeries(len, min, max, vRatio) {
-      vRatio = typeof vRatio !== 'undefined' ? vRatio : 0.2; // 31 data points
+    this.randomIntegerSeries = function(len, min, max, vRatio) {
+      vRatio = typeof vRatio !== 'undefined' ? vRatio : 0.15; // 31 data points
 
       var volatility = Math.round(Math.abs(max - min) * vRatio);
-      for(var i = 0, r = [], seed = randomInteger(min, max); i < len; i++) {
-        r[i] = randomInteger(Math.max(min, seed - volatility), Math.min(max, seed + volatility));
+      for(var i = 0, r = [], seed = this.randomInteger(min, max); i < len; i++) {
+        r[i] = this.randomInteger(Math.max(min, seed - volatility), Math.min(max, seed + volatility));
         seed = r[i];
       }
       return r;
     }
 
     var data = { 'data' : [] },
-        backend_ms  = randomIntegerSeries(length, 200, 600),
-        frontend_ms = randomIntegerSeries(length, 800, 4000);
+        backend_ms  = this.randomIntegerSeries(length, 200, 600),
+        frontend_ms = this.randomIntegerSeries(length, 800, 2400);
 
     for(time = start, index = 0; index < length; index++, time += interval) {
       data['data'][index] = {
@@ -37,9 +37,11 @@ var app = (function(Rickshaw) {
     return data;
   }
 
-  app.graph = function(data) {
-    var data = data['data'];
-    function transform(arr, field) {
+  Dashboard.graph = function(data) {
+    var data    = data['data'],
+        palette = new Rickshaw.Color.Palette({ scheme: 'colorwheel' });;
+
+    this.transform = function(arr, field) {
       return arr.map(function(value) {
         return {
           'x' : value['timestamp'],
@@ -50,17 +52,22 @@ var app = (function(Rickshaw) {
 
     var chart = new Rickshaw.Graph({
       element  : document.getElementById('chart'),
-      width    : 500,
-      height   : 340,
+      width    : 690,
+      height   : 290,
+      padding  : {
+        'top'    : 0.1,
+        'bottom' : 0.1
+      },
       renderer : 'line',
+      min      : 'auto',
       series   : [{
         name  : 'Backend',
-        color : 'steelblue',
-        data  : transform(data, 'backend_ms', 'x')
+        color : palette.color(),
+        data  : this.transform(data, 'backend_ms', 'x')
       }, {
         name  : 'Frontend',
-        color : 'red',
-        data  : transform(data, 'frontend_ms', 'x')
+        color : palette.color(),
+        data  : this.transform(data, 'frontend_ms', 'x')
       }]
     });
 
@@ -73,16 +80,26 @@ var app = (function(Rickshaw) {
         element     : document.getElementById('y_axis'),
       })
     }
+
     var legend = new Rickshaw.Graph.Legend({
       element : document.getElementById('legend'),
       graph   : chart
     });
 
+    var toggle = new Rickshaw.Graph.Behavior.Series.Toggle({
+      graph: chart,
+      legend: legend
+    });
+
+    var hover = new Rickshaw.Graph.HoverDetail({
+      graph: chart
+    });
+
     chart.render();
   }
 
-  var initialData = app.generateData();
-  app.graph(initialData);
+  var initialData = Dashboard.generateData();
+  Dashboard.graph(initialData);
 
-  return app;
+  return Dashboard;
 })(Rickshaw);

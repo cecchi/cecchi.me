@@ -3,10 +3,20 @@
   <head>
     <link rel="stylesheet" href="lib/rickshaw/rickshaw.min.css">
     <style>
+      body {
+        text-align: center;
+      }
+      #top {
+        display: inline-block;
+        padding: 10px;
+        background: #404040;
+      }
       #chart_container {
+        background: #FFFFFF;
         position: relative;
         font-family: Arial, Helvetica, sans-serif;
         display: inline-block;
+        padding: 10px 10px 10px 0px;
       }
       #chart {
         display: inline-block;
@@ -14,27 +24,33 @@
       }
       #y_axis {
         position: absolute;
-        top: 0;
+        top: 10px;
         bottom: 0;
         width: 40px;
       }
       #legend {
-        display: inline-block;
+        display: block;
         vertical-align: top;
-        margin: 0 0 0 10px;
+      }
+
+      .rickshaw_legend .line {
+        clear: none;
+        float: left;
       }
     </style>
   </head>
   <body>
-    <div id="chart_container">
-      <div id="y_axis"></div>
-      <div id="chart"></div>
+    <div id="top">
+      <div id="chart_container">
+        <div id="y_axis"></div>
+        <div id="chart"></div>
+      </div>
+      <div id="legend"></div>
     </div>
-    <div id="legend"></div>
 
     <script src="lib/rickshaw/vendor/d3.min.js"></script> 
     <script src="lib/rickshaw/vendor/d3.layout.min.js"></script> 
-    <script src="lib/rickshaw/rickshaw.min.js"></script> 
+    <script src="lib/rickshaw/rickshaw.js"></script> 
     <script src="scripts/app.js"></script>
   </body>
 </html>

@@ -72,6 +72,8 @@ Rickshaw.Graph.Behavior.Series.Toggle = function(args) {
 
 	if (this.legend) {
 
+                // Commented to remove jQuery dependency
+                /*
                 $(this.legend.list).sortable( {
                         start: function(event, ui) {
                                 ui.item.bind('no.onclick',
@@ -85,7 +87,8 @@ Rickshaw.Graph.Behavior.Series.Toggle = function(args) {
                                         ui.item.unbind('no.onclick');
                                 }, 250);
                         }
-                })
+                });
+                */
 
 		this.legend.lines.forEach( function(l) {
 			self.addAnchor(l);
