@@ -17,6 +17,8 @@ Rickshaw.Graph.RangeSlider = function(args) {
 			],
 			slide: function( event, ui ) {
 
+				console.log(graph);
+
 				graph.window.xMin = ui.values[0];
 				graph.window.xMax = ui.values[1];
 				graph.update();
@@ -28,6 +30,8 @@ Rickshaw.Graph.RangeSlider = function(args) {
 				if (graph.dataDomain()[1] == ui.values[1]) {
 					graph.window.xMax = undefined;
 				}
+
+				console.log(graph.window.xMin, graph.window.xMax);
 			}
 		} );
 	} );

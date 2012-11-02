@@ -1,10 +1,12 @@
 Dashboard.Data = (function(Rickshaw, d3) {
-  var Data = {'series' : []};
+  var Data = {'series' : [], 'raw' : []};
 
+  // Return a random integer within a range
   Data.randomInteger = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  // Return a lightly smoothed series of random integers
   Data.randomIntegerSeries = function(len, min, max, vRatio) {
     vRatio = typeof vRatio !== 'undefined' ? vRatio : 0.15; // 31 data points
 
@@ -17,6 +19,7 @@ Dashboard.Data = (function(Rickshaw, d3) {
     return r;
   }
 
+  // Return random input given a number of datapoints, an initial timestamp, and an interval 
   Data.randomInput = function(length, start, interval) {
     // Defaults
     length   = typeof length   !== 'undefined' ? length   : 31; // 31 data points
@@ -38,6 +41,7 @@ Dashboard.Data = (function(Rickshaw, d3) {
     return data;
   }
 
+  // Create a Rickshaw-usable data series from application input
   Data.transform = function(arr, field) {
     return arr.map(function(value) {
       return {
@@ -47,6 +51,7 @@ Dashboard.Data = (function(Rickshaw, d3) {
     });
   }
 
+  // Create a full series object for the Rickshaw.Graph constructor
   Data.palette = new Rickshaw.Color.Palette({ scheme: 'colorwheel' });
   Data.colors = [d3.rgb(Data.palette.color()), d3.rgb(Data.palette.color())];
   Data.parseInput = function(json) {
@@ -66,8 +71,11 @@ Dashboard.Data = (function(Rickshaw, d3) {
     return Dashboard.Controls.stacked ? r : r;
   }
 
+  // Set new input data and redraw the graph
   Data.setInput = function(json) {
-    return Data.series = Data.parseInput(json);
+    Data.raw    = Data.parseInput(json);
+    Data.series = Data.parseInput(json);
+    Dashboard.Graph.draw();
   }
 
   return Data;

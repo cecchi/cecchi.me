@@ -1,4 +1,5 @@
 Dashboard.Elements = (function(document) {
+  // Element bindings
   return {
     'chart'               : document.getElementById('chart'),
     'yAxis'               : document.getElementById('y-axis'),

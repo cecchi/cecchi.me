@@ -4,9 +4,10 @@ Dashboard.ViewFinder = (function(Rickshaw, window) {
     'dragging' : false
   };
 
+  // (Re)draw the view finder with optional configuration changes
   ViewFinder.draw = function(config) {
     ViewFinder.chart.configure(Rickshaw.extend({
-      series : Dashboard.Data.series
+      series : Dashboard.Data.raw
     }, config));
 
     ViewFinder.chart.renderer.unstack = !Dashboard.Controls.stacked;
@@ -14,6 +15,10 @@ Dashboard.ViewFinder = (function(Rickshaw, window) {
     ViewFinder.chart.render();
   }
 
+  // Keep the main graph and view finder in sync
+  Dashboard.Graph.chart.onUpdate(ViewFinder.draw);
+
+  // Draw the initial view finder
   ViewFinder.init = function() {
     // Hacky cloning implementation, Rickshaw.Graph is mutated heavily during construction
     ViewFinder.chart = new Rickshaw.Graph({
@@ -22,14 +27,12 @@ Dashboard.ViewFinder = (function(Rickshaw, window) {
       min      : Dashboard.Graph.chart.min,
       padding  : Dashboard.Graph.chart.renderer.padding,
       stroke   : Dashboard.Graph.chart.renderer.stroke,
-      series   : Dashboard.Data.series,
-      renderer : 'area', // Overridden after construction
+      series   : Dashboard.Data.raw,
+      renderer : 'area',
       height   : 70,
     });
 
-    // Override the renderer
-    ViewFinder.chart.renderer       = Rickshaw.extend({}, Dashboard.Graph.chart.renderer);
-    ViewFinder.chart.renderer.graph = ViewFinder.chart;
+    ViewFinder.chart.renderer.unstack = !Dashboard.Controls.stacked;
 
     ViewFinder.chart.render();
   }
@@ -49,12 +52,12 @@ Dashboard.ViewFinder = (function(Rickshaw, window) {
     var domain = Dashboard.Graph.chart.dataDomain(),
         range  = domain[1] - domain[0];
 
-    Dashboard.Graph.chart.window.xMin = domain[0] + (range * min);
-    Dashboard.Graph.chart.window.xMax = domain[0] + (range * max);
+    Dashboard.Graph.chart.window.xMin = Math.round(domain[0] + (range * min));
+    Dashboard.Graph.chart.window.xMax = Math.round(domain[0] + (range * max));
     Dashboard.Graph.chart.update();
   }
 
-  // Borrowed from http://stackoverflow.com/questions/442404/dynamically-retrieve-the-position-x-y-of-an-html-element
+  // Borrowed from http://stackoverflow.com/q/442404/1366376
   ViewFinder.getOffset = function() {
     var _x = 0, 
         _y = 0,
@@ -67,12 +70,14 @@ Dashboard.ViewFinder = (function(Rickshaw, window) {
     return { top: _y, left: _x };
   }
 
+  // Start dragging on mousedown
   Dashboard.Elements.viewFinder.addEventListener('mousedown', function(e) {
     ViewFinder.dragging = true;
     var offset = ViewFinder.getOffset();
     ViewFinder.selected = [(e.pageX - offset.left) / Dashboard.Elements.viewFinder.clientWidth];
   });
 
+  // Update view finder and graph on drag
   Dashboard.Elements.viewFinder.addEventListener('mousemove', function(e) {
     if(ViewFinder.dragging) {
       var offset = ViewFinder.getOffset();
@@ -81,12 +86,11 @@ Dashboard.ViewFinder = (function(Rickshaw, window) {
     }
   });
 
+  // Stop dragging on mouseup
   window.addEventListener('mouseup', function(e) {
     ViewFinder.dragging = false;
   });
 
-
-  Dashboard.Graph.chart.onUpdate(ViewFinder.draw);
   ViewFinder.init();
 
   return ViewFinder;

@@ -1,9 +1,10 @@
 Dashboard.Graph = (function(Rickshaw) {
   var Graph = {};
 
+  // (Re)draw the graph with optional configuration changes
   Graph.draw = function(config) {
     Graph.chart.configure(Rickshaw.extend({
-      series : Dashboard.Data.series
+      series : Dashboard.Data.raw
     }, config));
 
     Graph.chart.renderer.unstack = !Dashboard.Controls.stacked;
@@ -11,6 +12,7 @@ Dashboard.Graph = (function(Rickshaw) {
     Graph.chart.render();
   }
   
+  // Draw the initial graph
   Graph.init = function() {
     var input  = Dashboard.Data.randomInput();
     var series = Dashboard.Data.setInput(input);
@@ -29,8 +31,10 @@ Dashboard.Graph = (function(Rickshaw) {
       stroke   : true
     });
 
+    // Determine stacked vs. independent
     Graph.chart.renderer.unstack = !Dashboard.Controls.stacked;
 
+    // Add axes, legend, & tooltips
     Graph.extras = {
       axes : {
         x : new Rickshaw.Graph.Axis.Time({ graph: Graph.chart }),
@@ -58,7 +62,7 @@ Dashboard.Graph = (function(Rickshaw) {
       legend: Graph.extras.legend
     });
 
-    Graph.draw(series);
+    Graph.draw();
   }
 
   Graph.init();

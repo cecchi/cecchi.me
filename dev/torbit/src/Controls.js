@@ -3,6 +3,7 @@ Dashboard.Controls = (function(Rickshaw) {
     'stacked' : Dashboard.Elements.viewMode.value === 'stacked'
   };
 
+  // Toggler for stacked vs. independent
   Dashboard.Elements.viewMode.addEventListener('change', function(e) {
     Controls.stacked = e.srcElement.value === 'stacked';
     Dashboard.Graph.draw();
