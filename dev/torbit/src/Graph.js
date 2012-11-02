@@ -6,16 +6,14 @@ Dashboard.Graph = (function(Rickshaw) {
       series : Dashboard.Data.series
     }, config));
 
-    console.log('Drawing: ', Dashboard.Data.series);
-
     Graph.chart.renderer.unstack = !Dashboard.Controls.stacked;
+
     Graph.chart.render();
   }
   
   Graph.init = function() {
     var input  = Dashboard.Data.randomInput();
     var series = Dashboard.Data.setInput(input);
-
 
     Graph.chart = new Rickshaw.Graph({
       element  : Dashboard.Elements.chart,
