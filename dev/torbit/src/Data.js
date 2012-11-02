@@ -74,8 +74,7 @@ Dashboard.Data = (function(Rickshaw, d3) {
   // Set new input data and redraw the graph
   Data.setInput = function(json) {
     Data.raw    = Data.parseInput(json);
-    Data.series = Data.parseInput(json);
-    Dashboard.Graph.draw();
+    return Data.series = Data.parseInput(json);
   }
 
   return Data;
