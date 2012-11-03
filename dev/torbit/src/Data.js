@@ -57,6 +57,17 @@ Dashboard.Data = (function(Rickshaw, d3) {
     });
   }
 
+  // Validate user input
+  Data.validate = function(json) {
+    return json &&
+           Object.prototype.toString.call(json.data) === '[object Array]' &&
+           json.data.every(function(point) {
+             return !isNaN(point.timestamp) &&
+                    !isNaN(point.backend_ms) &&
+                    !isNaN(point.frontend_ms);
+           });
+  }
+
   // Create a full series object for the Rickshaw.Graph constructor
   Data.palette = new Rickshaw.Color.Palette({ scheme: 'colorwheel' });
   Data.colors = [d3.rgb(Data.palette.color()), d3.rgb(Data.palette.color())];
