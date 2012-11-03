@@ -4,7 +4,7 @@ Dashboard.Graph = (function(Rickshaw) {
   // (Re)draw the graph with optional configuration changes
   Graph.draw = function(config) {
     Graph.chart.configure(Rickshaw.extend({
-      series : Dashboard.Data.raw
+      series : Dashboard.Data.series.graph
     }, config));
 
     Graph.chart.renderer.unstack = !Dashboard.Controls.stacked;

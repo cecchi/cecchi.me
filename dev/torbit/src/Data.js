@@ -1,5 +1,11 @@
 Dashboard.Data = (function(Rickshaw, d3) {
-  var Data = {'series' : [], 'raw' : []};
+  var Data = {
+    'series' : {
+      'raw'        : [],
+      'graph'      : [],
+      'viewfinder' : []
+    }
+  };
 
   // Return a random integer within a range
   Data.randomInteger = function(min, max) {
@@ -73,8 +79,25 @@ Dashboard.Data = (function(Rickshaw, d3) {
 
   // Set new input data and redraw the graph
   Data.setInput = function(json) {
-    Data.raw    = Data.parseInput(json);
-    return Data.series = Data.parseInput(json);
+    Data.series.graph      = Data.parseInput(json);
+    Data.series.viewfinder = Data.parseInput(json);
+    return Data.series.raw = Data.parseInput(json);
+  }
+
+  // Return the data points within a given domain, given as timestamps 
+  Data.filterDomain = function(start, end) {
+    var min      = Math.min(start, end),
+        max      = Math.max(start, end),
+        filtered = [];
+
+    Data.series.raw.forEach(function(series) {
+      filtered.push({
+        'data' : series.data.filter(function(point) {
+          return point.x >= min && point.x <= max;
+        })
+      });
+    })
+    return filtered;
   }
 
   return Data;
