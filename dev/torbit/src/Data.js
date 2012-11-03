@@ -1,4 +1,4 @@
-Dashboard.Data = (function(Rickshaw, d3) {
+Dashboard.Data = (function(Rickshaw, d3, document) {
   var Data = {
     'series' : {
       'raw'        : [],
@@ -73,7 +73,7 @@ Dashboard.Data = (function(Rickshaw, d3) {
   Data.colors = [d3.rgb(Data.palette.color()), d3.rgb(Data.palette.color())];
   Data.parseInput = function(json) {
     var data = json['data'];
-    var r = [{
+    return [{
       name   : 'Frontend',
       color  : 'rgba(' + Data.colors[1]['r'] + ',' + Data.colors[1]['g'] + ',' + Data.colors[1]['b'] + ',0.25)',
       stroke : 'rgba(' + Data.colors[1]['r'] + ',' + Data.colors[1]['g'] + ',' + Data.colors[1]['b'] + ',0.75)',
@@ -84,12 +84,12 @@ Dashboard.Data = (function(Rickshaw, d3) {
       stroke : 'rgba(' + Data.colors[0]['r'] + ',' + Data.colors[0]['g'] + ',' + Data.colors[0]['b'] + ',0.75)',
       data   : Data.transform(data, 'backend_ms')
     }];
-
-    return Dashboard.Controls.stacked ? r : r;
   }
 
   // Set new input data and redraw the graph
   Data.setInput = function(json) {
+    Dashboard.Elements.input.value = JSON.stringify(json);
+
     Data.series.graph      = Data.parseInput(json);
     Data.series.viewfinder = Data.parseInput(json);
     return Data.series.raw = Data.parseInput(json);
@@ -112,4 +112,4 @@ Dashboard.Data = (function(Rickshaw, d3) {
   }
 
   return Data;
-})(Rickshaw, d3);
+})(Rickshaw, d3, document);

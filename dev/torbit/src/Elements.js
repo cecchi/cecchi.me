@@ -10,6 +10,9 @@ Dashboard.Elements = (function(document) {
     'viewFinderBlurLeft'  : document.getElementById('blur-left'),
     'viewFinderBlurRight' : document.getElementById('blur-right'),
     'viewFinderGrabLeft'  : document.querySelector('#blur-left .handle'),
-    'viewFinderGrabRight' : document.querySelector('#blur-right .handle')
+    'viewFinderGrabRight' : document.querySelector('#blur-right .handle'),
+    'input'               : document.getElementById('input'),
+    'random'              : document.getElementById('random'),
+    'inputSubmit'         : document.getElementById('submit')
   }
 })(document);

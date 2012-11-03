@@ -7,19 +7,29 @@
         text-align: center;
         font-family: Arial, "Lucida Sans Unicode", "Lucida Grande", Verdana, Helvetica, sans-serif;
       }
-      #top {
+      .block {
+        margin: 10px 0px;
         display: inline-block;
         padding: 7px;
         background: #404040;
         border-radius: 4px;
       }
-      #chart_container {
+      #chart_container, #input {
         background: #FFFFFF;
         position: relative;
         font-family: Arial, Helvetica, sans-serif;
         display: inline-block;
         padding: 10px 10px 10px 0px;
         border-radius: 3px;
+      }
+      #input {
+        width: 790px;
+        height: 180px;
+        border: none;
+        padding: 15px;
+        line-height: 150%;
+        font-size: 13px;
+        font-family: monospace;
       }
       #chart {
         display: inline-block;
@@ -91,6 +101,12 @@
         color: #FFFFFF;
         font-size: 12px;
       }
+      #input-footer {
+        padding: 5px 0px;
+      }
+      #input-footer button {
+        float: right;
+      }
       .rickshaw_legend .line {
         clear: none;
         float: left;
@@ -98,7 +114,7 @@
     </style>
   </head>
   <body>
-    <div id="top">
+    <div class="block">
       <div id="chart_container">
         <div id="y-axis"></div>
         <div id="chart"></div>
@@ -121,6 +137,16 @@
             <option value="stacked">Stacked</option>
           </select>
         </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="block">
+      <textarea id="input"></textarea>
+      <div id="input-footer">
+        <button id="submit">Submit</button>
+        <button id="random">Random Data</button>
       </div>
     </div>
 

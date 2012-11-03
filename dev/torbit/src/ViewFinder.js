@@ -9,9 +9,13 @@ Dashboard.ViewFinder = (function(Rickshaw, window) {
   ViewFinder.draw = function(config) {
     ViewFinder.domain = Dashboard.Graph.chart.dataDomain();
 
-    ViewFinder.chart.configure(Rickshaw.extend({
-      series : Dashboard.Data.series.viewfinder
-    }, config));
+    Dashboard.Data.series.viewfinder.forEach(function(series, i) {
+      ViewFinder.chart.series[i].data = series.data;
+    });
+
+    if(config) {
+      ViewFinder.chart.configure(config);
+    }
 
     ViewFinder.chart.renderer.unstack = !Dashboard.Controls.stacked;
 

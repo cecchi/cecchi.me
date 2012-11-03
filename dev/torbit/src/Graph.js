@@ -3,9 +3,15 @@ Dashboard.Graph = (function(Rickshaw) {
 
   // (Re)draw the graph with optional configuration changes
   Graph.draw = function(config) {
-    Graph.chart.configure(Rickshaw.extend({
-      series : Dashboard.Data.series.graph
-    }, config));
+    console.log('Redrawing', Dashboard.Data.series.graph);
+
+    Dashboard.Data.series.graph.forEach(function(series, i) {
+      Graph.chart.series[i].data = series.data;
+    });
+
+    if(config) {
+      Graph.chart.configure(config);
+    }
 
     Graph.chart.renderer.unstack = !Dashboard.Controls.stacked;
 
