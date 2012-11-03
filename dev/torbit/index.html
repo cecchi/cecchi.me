@@ -33,20 +33,42 @@
       }
       #view-finder #blur-left,
       #view-finder #blur-right {
-        display: none;
         position: absolute;
         z-index: 10;
         background: rgba(0, 0, 0, .2);
         top: 0px;
         height: 100%;
       }
+      #view-finder .handle {
+        float: right;
+        height: 100%;
+        width: 3px;
+        background: rgba(255, 255, 255, .7);
+        border: 1px solid rgba(0, 0, 0, .4);
+        border-width: 0px 1px;
+        cursor:hand;
+        cursor:grab;
+        cursor:-moz-grab;
+        cursor:-webkit-grab;
+        cursor:url(https://mail.google.com/mail/images/2/openhand.cur), default !important;
+      }
+      #view-finder #blur-right .handle {
+        float: left;
+      }
+      #view-finder .handle.dragging {
+        cursor:hand;
+        cursor:grab;
+        cursor:-moz-grab;
+        cursor:-webkit-grab;
+        cursor:url(https://mail.google.com/mail/images/2/closedhand.cur), default !important;
+      }
       #view-finder #blur-left {
+        text-align: right;
         left: 0px;
-        border-right: 1px dotted rgba(0, 0, 0, .4);
       }
       #view-finder #blur-right {
+        text-align: left;
         right: 0px;
-        border-left: 1px dotted rgba(0, 0, 0, .4);
       }
       #y-axis {
         position: absolute;
@@ -81,8 +103,12 @@
         <div id="y-axis"></div>
         <div id="chart"></div>
         <div id="view-finder">
-          <div id="blur-left"></div>
-          <div id="blur-right"></div>
+          <div id="blur-left">
+            <div class="handle"></div>
+          </div>
+          <div id="blur-right">
+            <div class="handle"></div>
+          </div>
           <div id="view-finder-chart"></div>
         </div>
       </div>

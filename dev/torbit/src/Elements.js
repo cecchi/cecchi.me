@@ -8,6 +8,8 @@ Dashboard.Elements = (function(document) {
     'viewFinder'          : document.getElementById('view-finder'),
     'viewFinderChart'     : document.getElementById('view-finder-chart'),
     'viewFinderBlurLeft'  : document.getElementById('blur-left'),
-    'viewFinderBlurRight' : document.getElementById('blur-right')
+    'viewFinderBlurRight' : document.getElementById('blur-right'),
+    'viewFinderGrabLeft'  : document.querySelector('#blur-left .handle'),
+    'viewFinderGrabRight' : document.querySelector('#blur-right .handle')
   }
 })(document);
