@@ -1,4 +1,4 @@
-Dashboard.Data = (function(Elements, Rickshaw, d3, document) {
+Dashboard.Data = (function(Rickshaw, d3, document) {
   var Data = {
     'series' : {
       'raw'        : [],
@@ -88,7 +88,7 @@ Dashboard.Data = (function(Elements, Rickshaw, d3, document) {
 
   // Set new input data and redraw the graph
   Data.setInput = function(json) {
-    Elements.input.value = JSON.stringify(json);
+    Dashboard.Elements.input.value = JSON.stringify(json);
 
     Data.series.graph      = Data.parseInput(json);
     Data.series.viewfinder = Data.parseInput(json);
@@ -112,4 +112,4 @@ Dashboard.Data = (function(Elements, Rickshaw, d3, document) {
   }
 
   return Data;
-})(Dashboard.Elements, Rickshaw, d3, document);
+})(Rickshaw, d3, document);

@@ -1,11 +1,9 @@
-Dashboard.Graph = (function(Data, Elements, Controls, Rickshaw) {
+Dashboard.Graph = (function(Rickshaw) {
   var Graph = {};
 
   // (Re)draw the graph with optional configuration changes
   Graph.draw = function(config) {
-    console.log('Redrawing', Data.series.graph);
-
-    Data.series.graph.forEach(function(series, i) {
+    Dashboard.Data.series.graph.forEach(function(series, i) {
       Graph.chart.series[i].data = series.data;
     });
 
@@ -13,18 +11,18 @@ Dashboard.Graph = (function(Data, Elements, Controls, Rickshaw) {
       Graph.chart.configure(config);
     }
 
-    Graph.chart.renderer.unstack = !Controls.stacked;
+    Graph.chart.renderer.unstack = !Dashboard.Controls.stacked;
 
     Graph.chart.render();
   }
   
   // Draw the initial graph
   Graph.init = function() {
-    var input  = Data.randomInput();
-    var series = Data.setInput(input);
+    var input  = Dashboard.Data.randomInput();
+    var series = Dashboard.Data.setInput(input);
 
     Graph.chart = new Rickshaw.Graph({
-      element  : Elements.chart,
+      element  : Dashboard.Elements.chart,
       width    : 770,
       height   : 320,
       padding  : {
@@ -38,7 +36,7 @@ Dashboard.Graph = (function(Data, Elements, Controls, Rickshaw) {
     });
 
     // Determine stacked vs. independent
-    Graph.chart.renderer.unstack = !Controls.stacked;
+    Graph.chart.renderer.unstack = !Dashboard.Controls.stacked;
 
     // Add axes, legend, & tooltips
     Graph.extras = {
@@ -48,12 +46,12 @@ Dashboard.Graph = (function(Data, Elements, Controls, Rickshaw) {
           graph       : Graph.chart,
           orientation : 'left',
           tickFormat  : Rickshaw.Fixtures.Number.formatKMBT,
-          element     : Elements.yAxis
+          element     : Dashboard.Elements.yAxis
         })
       },
       
       legend : new Rickshaw.Graph.Legend({
-        element : Elements.legend,
+        element : Dashboard.Elements.legend,
         graph   : Graph.chart
       }),
 
@@ -74,4 +72,4 @@ Dashboard.Graph = (function(Data, Elements, Controls, Rickshaw) {
   Graph.init();
 
   return Graph;
-})(Dashboard.Data, Dashboard.Elements, Dashboard.Controls, Rickshaw);
+})(Rickshaw);

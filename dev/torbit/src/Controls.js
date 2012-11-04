@@ -1,24 +1,24 @@
-Dashboard.Controls = (function(Graph, Data, Elements, Rickshaw) {
+Dashboard.Controls = (function(Rickshaw) {
   Controls = {
-    'stacked' : Elements.viewMode.value === 'stacked'
+    'stacked' : Dashboard.Elements.viewMode.value === 'stacked'
   };
 
   // Toggler for stacked vs. independent
-  Elements.viewMode.addEventListener('change', function(e) {
-    Controls.stacked = Elements.viewMode.value === 'stacked';
-    Graph.draw();
+  Dashboard.Elements.viewMode.addEventListener('change', function(e) {
+    Dashboard.Controls.stacked = Dashboard.Elements.viewMode.value === 'stacked';
+    Dashboard.Graph.draw();
   });
 
   // Random input generator
-  Elements.random.addEventListener('click', function(e) {
-    Elements.input.value = JSON.stringify(Data.randomInput());
+  Dashboard.Elements.random.addEventListener('click', function(e) {
+    Dashboard.Elements.input.value = JSON.stringify(Dashboard.Data.randomInput());
   });
 
   // Input submitter
-  Elements.inputSubmit.addEventListener('click', function(e) {
-    Data.setInput(JSON.parse(Elements.input.value));
-    Graph.draw();
+  Dashboard.Elements.inputSubmit.addEventListener('click', function(e) {
+    Dashboard.Data.setInput(JSON.parse(Dashboard.Elements.input.value));
+    Dashboard.Graph.draw();
   });
 
   return Controls;
-})(Dashboard.Graph, Dashboard.Data, Dashboard.Elements, Rickshaw);
+})(Rickshaw);
