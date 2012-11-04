@@ -1,0 +1,108 @@
+body {
+  text-align: center;
+  font-family: Arial, "Lucida Sans Unicode", "Lucida Grande", Verdana, Helvetica, sans-serif;
+}
+.block {
+  margin: 10px 0px;
+  display: inline-block;
+  padding: 7px;
+  background: #404040;
+  border-radius: 4px;
+}
+#chart_container, #input {
+  background: #FFFFFF;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  padding: 10px 10px 10px 0px;
+  border-radius: 3px;
+}
+#input {
+  width: 790px;
+  height: 180px;
+  border: none;
+  padding: 15px;
+  line-height: 150%;
+  font-size: 13px;
+  font-family: monospace;
+}
+#chart {
+  display: inline-block;
+  margin-left: 40px;
+}
+#view-finder {
+  position: relative;
+  margin-left: 40px;
+  margin-top: 20px;
+  outline: 1px solid rgba(0, 0, 0, .16);
+}
+#view-finder #blur-left,
+#view-finder #blur-right {
+  position: absolute;
+  z-index: 10;
+  background: rgba(0, 0, 0, .2);
+  top: 0px;
+  height: 100%;
+}
+#view-finder .handle {
+  float: right;
+  height: 100%;
+  width: 3px;
+  background: rgba(255, 255, 255, .7);
+  border: 1px solid rgba(0, 0, 0, .4);
+  border-width: 0px 1px;
+  cursor:hand;
+  cursor:grab;
+  cursor:-moz-grab;
+  cursor:-webkit-grab;
+  cursor:url(https://mail.google.com/mail/images/2/openhand.cur), default !important;
+}
+#view-finder #blur-right .handle {
+  float: left;
+}
+#view-finder .handle.dragging {
+  cursor:hand;
+  cursor:grab;
+  cursor:-moz-grab;
+  cursor:-webkit-grab;
+  cursor:url(https://mail.google.com/mail/images/2/closedhand.cur), default !important;
+}
+#view-finder #blur-left {
+  text-align: right;
+  left: 0px;
+}
+#view-finder #blur-right {
+  text-align: left;
+  right: 0px;
+}
+#y-axis {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  width: 40px;
+}
+#chart-footer {
+  padding: 10px 0px;
+}
+#legend {
+  padding: 0px;
+  float: left;
+  display: block;
+  vertical-align: top;
+}
+#view-mode {
+  float: right;
+  text-align: right;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+#input-footer {
+  padding: 5px 0px;
+}
+#input-footer button {
+  float: right;
+}
+.rickshaw_legend .line {
+  clear: none;
+  float: left;
+}
