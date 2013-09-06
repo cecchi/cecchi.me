@@ -1,0 +1,204 @@
+html, body {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  background-image: url(../images/background@1100.jpg);
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+#strip {
+  background: rgba(0, 0, 0, .65);
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  height: 165px;
+  width: 100%;
+  min-width: 880px;
+  text-align: center;
+}
+#strip #column {
+  text-align: left;
+  width: 100%;
+  min-width: 870px;
+  max-width: 1000px;
+  display: inline-block;
+  height: 165px;
+  position: relative;
+  padding: 0px;
+  overflow: hidden;
+}
+#strip #row {
+  display: table-row;
+  height: 165px;
+}
+#strip hgroup {
+  position: relative;
+  top: 3px;
+  left: 10px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 50px;
+}
+#strip h1, #strip h2 {
+  margin: 0px;
+  color: #FFFFFF;
+  font-weight: normal;
+}
+#strip h1 {
+  font-family: 'NovecentoWideLight';
+  font-size: 72px;
+  font-weight: normal;
+  line-height: 54px;
+  vertical-align: middle;
+}
+#strip h1 span:first-child {
+  margin-left: 4px;
+}
+#strip h1 span {
+  font-family: 'OCRAStd';
+  font-size: 20px;
+  font-weight: bold;
+  line-height: inherit;
+  vertical-align: inherit;
+}
+#strip h2 {
+  font-family: 'PhoenicaStd';
+  font-size: 26px;
+  letter-spacing: 6px;
+  text-indent: 6px;
+  margin-top: 2px;
+}
+#strip #welcome {
+  font-family: 'PhoenicaStd';
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  letter-spacing: 5px;
+  line-height: 150%;
+  padding: 10px;
+  vertical-align: middle;
+  display: table-cell;
+  -webkit-font-smoothing: antialiased;
+}
+#strip #welcome span {
+  font-style: italic;
+  font-weight: bold;
+}
+#wrapper {
+  position: absolute;
+  top: 250px;
+  text-align: center;
+  width: 100%;
+}
+#content {
+  position: relative;
+  left: 50%;
+  margin-left: -410px;
+  background: rgba(0, 0, 0, .65);
+  height: 335px;
+  overflow: hidden;
+  width: 820px;
+}
+#content #actions {
+  float: left;
+  padding: 0px 20px;
+}
+#content #actions > div {
+  height: 84px;
+}
+#content iframe {
+  background: #000000;
+  border: 10px solid #000000;
+}
+
+input[type='button'] {
+  padding: 10px 17px;
+  font-size: 20px;
+  line-height: normal;
+  -webkit-font-smoothing: auto;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  margin: 0;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  position: relative;
+  font-weight: normal;
+  width: 200px;
+  height: auto;
+  -webkit-appearance: button;
+  position: relative;
+  top: 19px;
+}
+input[type='button'].blue {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+  border: 1px solid #0d65d6;
+  background-color: #1c78ee;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2c88fe), color-stop(100%, #1c78ee));
+  background-image: -webkit-linear-gradient(#2c88fe,#1c78ee);
+  background-image: -moz-linear-gradient(#2c88fe,#1c78ee);
+  background-image: -o-linear-gradient(#2c88fe,#1c78ee);
+  background-image: linear-gradient(#2c88fe,#1c78ee);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF2C88FE', endColorstr='#FF1C78EE');
+}
+input[type='button'].blue:hover {
+    background-image: none;
+    filter: none;
+    background-color: #208af1;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #339afe), color-stop(100%, #208af1));
+    background-image: -webkit-linear-gradient(#339afe,#208af1);
+    background-image: -moz-linear-gradient(#339afe,#208af1);
+    background-image: -o-linear-gradient(#339afe,#208af1);
+    background-image: linear-gradient(#339afe,#208af1);
+    background-repeat: repeat-x;
+    *zoom: 1;
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF339AFE', endColorstr='#FF208AF1');
+    border-color: #085cba;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+}
+
+@font-face{ 
+  font-family: 'NovecentoWideLight';
+  src: url('fonts/NovecentoWideLight.eot');
+  src: url('fonts/NovecentoWideLight.eot?#iefix') format('embedded-opentype'),
+       url('fonts/NovecentoWideLight.woff') format('woff'),
+       url('fonts/NovecentoWideLight.ttf') format('truetype'),
+       url('fonts/NovecentoWideLight.svg#webfont') format('svg');
+}
+@font-face{ 
+  font-family: 'OCRAStd';
+  src: url('fonts/OCRAStd.eot');
+  src: url('fonts/OCRAStd.eot?#iefix') format('embedded-opentype'),
+       url('fonts/OCRAStd.woff') format('woff'),
+       url('fonts/OCRAStd.ttf') format('truetype'),
+       url('fonts/OCRAStd.svg#webfont') format('svg');
+}
+@font-face{ 
+  font-family: 'PhoenicaStd';
+  src: url('fonts/PhoenicaStd.eot');
+  src: url('fonts/PhoenicaStd.eot?#iefix') format('embedded-opentype'),
+       url('fonts/PhoenicaStd.woff') format('woff'),
+       url('fonts/PhoenicaStd.ttf') format('truetype'),
+       url('fonts/PhoenicaStd.svg#webfont') format('svg');
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta property="og:image" content="/images/cover-art.jpg"/>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <title>CFP the Band</title>
+    <script type="text/javascript">
+    var tag = document.createElement('script');
+    tag.src = "//www.youtube.com/iframe_api";
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(tag, first);
+
+    function onYouTubeIframeAPIReady() {
+      var player;
+      player = new YT.Player('player', {
+        videoId: 'JIXTCeKtcs0',
+        height: 315,
+        width: 560,
+        playerVars: { 'autoplay': 1, 'controls': 0 }
+      });
+    }
+    </script>
+  </head>
+  <body>
+    <div id="strip">
+      <div id="column">
+        <div id="row">
+          <hgroup>
+            <h1>C<span>x</span>F<span>x</span>P</h1>
+            <h2>THE BAND</h2>
+          </hgroup>
+          <div id="welcome">
+            After 18 months spent pouring our blood, sweat, and tears into a collection of 4 songs of original material, we finally have a finished product.<br />
+            Check out our first EP, titled &quot;<span>Self-Made Soul</span>&quot;.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="wrapper">
+      <div id="content">
+        <div id="actions">
+          <div>
+            <a href="http://cfptheband.bandcamp.com" target="_blank">
+              <input type="button" value="Download The EP" id="download" class="blue" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.facebook.com/CFPtheBand" target="_blank">
+              <input type="button" value="Facebook" id="facebook" class="blue" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.twitter.com/CFPtheBand" target="_blank">
+              <input type="button" value="Twitter" id="twitter" class="blue" />
+            </a>
+          </div>
+          <div>
+            <a href="http://www.youtube.com/user/CFPTheBand" target="_blank">
+              <input type="button" value="Youtube" id="bandcamp" class="blue" />
+            </a>
+          </div>
+        </div>
+        <div id="player"></div>
+      </div>
+    </div>
+  </body>
+</html>
