@@ -1,0 +1,44 @@
+{
+  "name"             : "Labels",
+  "version"          : "0.1",
+  "manifest_version" : 2,
+  "description"     : "Label-based bookmark manager",
+  "icons"           : {
+    "16"  : "images/16x16.png",
+    "48"  : "images/48x48.png",
+    "128" : "images/128x128.png"
+  },
+  "background" : {
+    "page"    : "html/background.html"
+  },
+  "page_action" : {
+    "default_icon"  : "images/16x16.png",
+    "default_title" : "Labels",
+    "default_popup" : "html/popup.html" 
+  },
+  "omnibox" : { 
+    "keyword" : "label" 
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "<all_urls>"
+      ],
+      "js" : [
+        "tab.js"
+      ],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ],
+  "commands": {
+    "_execute_page_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L"
+      }
+    }
+  },
+  "permissions" : [
+    "storage"
+  ]
+}

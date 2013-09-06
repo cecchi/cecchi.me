@@ -2,7 +2,6 @@
 var map = {}
 $.getJSON('http://cecchi.dev/dev/chrome/switchenv/map.json', function(data) {
 	map = data;
-	console.log(map);
 
 	// Initialize contact, show the icon if local
 	chrome.extension.sendRequest({ location : location, map : map, target : 'background'}, function(response) {});
