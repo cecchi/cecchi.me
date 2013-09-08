@@ -30,7 +30,7 @@ html[xmlns] .clearfix {
 
 body {
     font-family: Helvetica, Arial, Verdana, sans-serif !important;
-    padding: 37px 0px 0px;
+    padding: 43px 0px 0px;
     margin: 0px;
 }
 
@@ -41,19 +41,25 @@ body {
 
 nav {
     float: left;
-    width: 300px;
+    width: 240px;
+    padding-top: 10px;
 }
 
 nav a#logo {
-    width: 275px;
     height: 15px;
-    background: transparent url(../images/logo.16.png) no-repeat 0 0;
     display: inline-block;
     margin-bottom: 20px;
+    color: #000000;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'BlairMdITCTTMedium', inherit;
+    font-size: 14px;
+    overflow: hidden;
 }
 
 nav ul {
-    margin: 17px 0px;
+    margin: 19px 0px;
     padding: 0px;
     list-style: none;
 }
@@ -61,7 +67,7 @@ nav ul {
 nav ul li {
     font-size: 9px;
     text-transform: uppercase;
-    margin: 2px 0px;
+    margin: 3px 0px 2px;
 }
 
 nav ul li a {
@@ -71,6 +77,6 @@ nav ul li a {
 
 #video {
     float: right;
-    width: 700px;
-    height: 395px;
+    width: 760px;
+    height: 427px;
 }
