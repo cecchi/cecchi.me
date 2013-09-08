@@ -35,6 +35,11 @@ header {
     margin: 30px 0px;
     letter-spacing: 2px;
 }
+header span.logo {
+    width: 275px;
+    height: 15px;
+    background: transparent url(../images/logo.16.png) no-repeat 0 0;
+}
 header span.left {
     float: left;
 }
@@ -46,7 +51,8 @@ header span.right {
     height: 60px;
     position: relative;
     color: #000000;
-    font-size: 12px;
+    font-size: 13px;
+    margin-bottom: 15px;
 }
 
 nav {
@@ -59,7 +65,7 @@ nav a {
     margin: 0px 10px;
     text-decoration: none;
     color: #000000;
-}
+} 
 
 div#video {
     width: 100%;
@@ -86,8 +92,19 @@ ul#social {
 ul#social li {
     display: block;
 }
+ul#social li a {
+    text-decoration: none;
+    color: #000000;
+}
 
-h3 {
+footer {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+}
+footer a {
     text-align: center;
     margin: 4px 0px;
+    color: #000000;
+    text-decoration: none;
 }
