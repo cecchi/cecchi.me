@@ -42,20 +42,35 @@ body {
 nav {
     float: left;
     width: 240px;
-    padding-top: 10px;
 }
 
-nav a#logo {
+nav a#logo-image {
+    background: transparent url(../images/logo.14.png) no-repeat 0 0;
+    width: 241px;
+    height: 15px;
+    display: block;
+}
+nav a#logo-text {
     height: 15px;
     display: inline-block;
     margin-bottom: 20px;
     color: #000000;
-    letter-spacing: 3px;
+    letter-spacing: 0px;
     text-decoration: none;
     font-weight: bold;
     font-family: 'BlairMdITCTTMedium', inherit;
-    font-size: 14px;
+    font-size: 12px;
     overflow: hidden;
+    transform:scale(1.5,1); /* W3C */
+    -webkit-transform:scale(1.5,1); /* Safari and Chrome */
+    -moz-transform:scale(1.5,1); /* Firefox */
+    -ms-transform:scale(1.5,1); /* IE 9 */
+    -o-transform:scale(1.5,1); /* Opera */
+    position: relative;
+    left: 38px;
+}
+nav a#logo-image {
+    display: none;
 }
 
 nav ul {
@@ -77,6 +92,6 @@ nav ul li a {
 
 #video {
     float: right;
-    width: 760px;
-    height: 427px;
+    width: 750px;
+    height: 423px;
 }
