@@ -41,11 +41,12 @@ body {
 
 nav {
     float: left;
-    width: 240px;
+    width: 250px;
 }
 
 nav a#logo-image {
     background: transparent url(../images/logo.14.png) no-repeat 0 0;
+    padding-bottom: 20px;
     width: 241px;
     height: 15px;
     display: block;
@@ -69,7 +70,7 @@ nav a#logo-text {
     position: relative;
     left: 38px;
 }
-nav a#logo-image {
+nav a#logo-text {
     display: none;
 }
 
