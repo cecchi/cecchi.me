@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'BlairMdITCTTMedium';
+    src: url('../fonts/blair.eot');
+    src: url('../fonts/blair.eot') format('embedded-opentype'),
+         url('../fonts/blair.woff') format('woff'),
+         url('../fonts/blair.ttf') format('truetype'),
+         url('../fonts/blair.svg#BlairMdITCTTMedium') format('svg');
+}
+
+body {
+    font-family: Helvetica, Arial, Verdana, sans-serif !important;
+    padding: 43px 0px 0px;
+    margin: 0px;
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    border: 2px solid black;
+    border-left: 0px;
+    border-right: 0px;
+    padding: 35px 0px;
+}
+
+a#logo-image {
+    background: transparent url(../images/logo.16.png) no-repeat 0 0;
+    width: 275px;
+    height: 15px;
+    display: inline-block;
+}
+a#logo-text {
+    display: none;
+}
+
+h1 {
+    display: block;
+    font-size: 12px;
+    color: #000000;
+    padding: 20px 0px 5px;
+    letter-spacing: 2px;
+}
+
+h3 {
+    display: block;
+    font-size: 14px;
+    color: #888888;
+    padding: 3px 0px;
+    font-weight: normal;
+}
+
+a {
+    color: #888888 !important;
+}
+
+a.no-decoration {
+    text-decoration: none !important;
+}
