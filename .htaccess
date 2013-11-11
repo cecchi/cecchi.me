@@ -1,6 +1,9 @@
 RewriteEngine on
 RewriteRule ^(.+).src$ /resources/source.php?path=$1 [L]
 
+RewriteCond %{REQUEST_URI} "/syro/"
+RewriteRule (.*) $1 [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]*)/?((?:[^/]+/?)*)$ index.php [B]
