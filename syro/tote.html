@@ -1,0 +1,62 @@
+<html>
+<head>
+<link href="css/tote.css" rel="stylesheet" media="screen" type="text/css" />
+<title>SYDNEY ROGERS</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('form').on('submit', function(e) {
+        e.preventDefault();
+
+        $.post('subscribe.php', {
+            'email' : $('#email').val()
+        }, function(response) {
+            if(response.error) {
+                alert('We couldn\'t add your email to the waitlist. Please ensure you have entered a valid email address.');
+            } else {
+                alert('Thank you for adding yourself to the waitlist. Please check your email for further information.')
+            }
+        });
+    });
+});
+</script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <a href="/" id="logo-image"></a>
+        <a href="/" id="logo-text">SYDN&Euml;Y R&Oslash;GERS</a>
+    </header>
+
+    <img id="product" src="" />
+
+    <section id="description">
+        <h3>SYRO IPAD TOTE</h3>
+
+        <p>
+            THE SYRO TOTE IS AN ICON SYDN&Euml;Y R&Oslash;GERS DESIGN THAT WORKS IN CONJUNCTION WITH AN IPAD FOR A REVOLUTIONARY EXPERIENCE. CLEAN, SLEEK, AND CONTEMPORARY. IT BRINGS TOGETHER FASHION AND TECHNOLOGY. WRON ON THE SHOULDER OR HELD BY THE HANDLE, THE STRUCTURED SQUARE BASE MAKES THE SYRO BAG DECEPTIVELY SPACIOUS. THE BUTTER SOFT LEATHER ALONG WITH THE MATTE BLACK BUCKLES AND MINIMAL BRANDING ADD TO ITS TIMELESS APPEAL. FOLLOW THESE STEPS TO ACTIVATE THE DIGITAL ENHANCEMENT WITH YOUR IPAD.
+        </p>
+
+        <ol>
+            <li>YOU TURN ON YOUR IPAD AND DOWNLOAD THE SYDN&Euml;Y R&Oslash;GERS APP FROM THE APPLE APP STORE.</li>
+            <li>ONCE DOWNLOADED, YOU OPEN THE APP AND CHOOSE THE SYRO ANIMATION TO PLAY</li>
+            <li>YOU SLIDE YOUR IPAD INTO YOUR SYRO POCKET&hellip;</li>
+            <li>AND VOILA</li>
+        </ol>
+
+        <p>100% calfskin leather. Black. Fully lined in black suede. Magnetic interior closures. Ipad not included.</p>
+
+        <p>Very limited supply</p>
+    </section>
+
+    <footer>
+        DUE TO HIGH DEMAND AND VERY LIMITED SUPPLY, SYDN&Euml;Y R&Oslash;GERS HAS OPENED A WAITLIST FOR THE SYRO TOTE. TO PLACE YOUR NAME ON THE WAITLIST FOR THIS TRULY REVOLUTIONARY PRODUCT PLEASE ENTER YOUR EMAIL BELOW:
+
+        <form>
+            <input type="text" placeholder="you@domain.com" id="email" />
+            <input type="submit" value="SUBMIT" />
+        </form>
+    </footer>
+</div>
+</body>
+</html>

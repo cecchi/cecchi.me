@@ -6,7 +6,7 @@ function error($message) {
     )));
 }
 
-$email = 'cecchi.macnaughton@gmail.com';
+$email = $_POST['email'];
 
 try {
     require_once('libraries/Mailchimp.php');

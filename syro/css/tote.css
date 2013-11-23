@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'BlairMdITCTTMedium';
+    src: url('../fonts/blair.eot');
+    src: url('../fonts/blair.eot') format('embedded-opentype'),
+         url('../fonts/blair.woff') format('woff'),
+         url('../fonts/blair.ttf') format('truetype'),
+         url('../fonts/blair.svg#BlairMdITCTTMedium') format('svg');
+}
+
+body {
+    font-family: Helvetica, Arial, Verdana, sans-serif !important;
+    padding: 43px 0px 0px;
+    margin: 0px;
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    border: 2px solid black;
+    border-left: 0px;
+    border-right: 0px;
+    padding: 35px 0px;
+}
+
+a#logo-image {
+    background: transparent url(../images/logo.16.png) no-repeat 0 0;
+    width: 275px;
+    height: 15px;
+    display: inline-block;
+}
+a#logo-text {
+    display: none;
+}
+
+img#product {
+    width: 440px;
+    height: 440px;
+    float: left;
+    margin: 30px;
+}
+
+section#description {
+    text-align: left;
+    padding: 30px;
+    font-size: 12px;
+    line-height: 150%;
+}
+
+h3 {
+    font-size: 20px;
+    font-family: 'BlairMdITCTTMedium';
+}
+
+ol {
+    margin: 22px 0px;
+}
+
+ol li {
+    list-style-position: inside;
+    margin: 4px 0px;
+}
+
+footer {
+    font-size: 13px;
+    padding: 0px 50px 50px;
+    line-height: 150%;
+}
+
+footer form {
+    margin-top: 20px;
+}
+
+footer form input[type="text"] {
+    width: 200px;
+}
