@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cecchi MacNaughton <cecchi.macnaughton@gmail.com>",
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "underscore": "~1.6.0"
+  }
 }
