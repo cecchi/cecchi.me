@@ -1,2 +1,5 @@
 files/*.zip
 syro/.mailchimp.key
+screener/config.js
+screener/stocks/*
+node_modules
