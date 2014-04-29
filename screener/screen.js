@@ -1,35 +1,40 @@
 var _        = require('underscore'),
     fs       = require('fs'),
+    utils    = require('utils'),
     config   = require('config.js'),
     casper   = require('casper').create({
         verbose: true,
         logLevel: "debug",
-        waitTimeout: 10000
+        waitTimeout: 10000,
+        safeLogs: false,
+        onWaitTimeout: function waitTimeout() {
+            casper.capture('captures/timeout-' + Date.now() + '.png');
+        }
     }),
-    login    = 'https://login.fidelity.com/ftgw/Fas/Fidelity/RtlCust/Login/Response',
+    login    = 'https://login.fidelity.com/ftgw/Fas/Fidelity/RtlCust/Login/Init',
     screener = 'https://research2.fidelity.com/fidelity/screeners/commonstock/main.asp?saved=' + config.screener.id,
     stocks   = [],
     columns  = [];
 
 casper.echo('Connecting to Fidelity...');
 
-casper.start();
+// Start at the login page
+casper.start(login);
 
-// Login
-casper.open(login, {
-    method: 'POST',
-    data:   {
-        'SSN': config.user.username,
-        'PIN':  config.user.password,
-        'SavedIdInd': 'N'
-    }
-});
+// Fill & submit the form
+casper.thenEvaluate(function evaluate(config) {
+    document.querySelector('form#Login [name=SSN]').value = config.user.username;
+    document.querySelector('form#Login [name=PIN]').value = config.user.password;
+    document.querySelector('form#Login').submit();
+}, config);
 
 // Open screener
-casper.thenOpen(screener)
+casper.waitForUrl(/defaultPage/, function then() {
+    this.open(screener);
+});
 
 // Load custom view
-casper.waitForSelector('.screener-control a[key=custom]', function() {
+casper.waitForSelector('.screener-control a[key=custom]', function changeView() {
     this.click('.screener-control a[key=custom]');
 });
 
@@ -53,7 +58,7 @@ function paginate() {
 
 // Scraping
 function scrape() {
-    var data = casper.evaluate(function() {
+    var data = casper.evaluate(function evaluateScrape() {
         return [].slice.call($('#table-results').find('tr').map(function() {
             return [[].slice.call($(this).find('td:not(:first-child), th:not(:first-child)').map(function() {
                 var cell = $(this);
